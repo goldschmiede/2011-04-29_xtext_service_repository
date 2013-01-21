@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tns="http://countandcare.de/tutorial/dsl/v1/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://countandcare.de/tutorial/dsl/v1/"
+	>
+		
+    <xsd:complexType name="Customer">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    			Version:	1.0
+    			Lifecycle state: proposed
+    		</xsd:documentation>
+    	</xsd:annotation>
+    	
+	    	
+    	<xsd:sequence>
+			<xsd:element name="customerId"   type="xsd:string" />
+			<xsd:element name="firstname"   type="xsd:string" />
+			<xsd:element name="lastname"   type="xsd:string" />
+			<xsd:element name="contracts" minOccurs="0" maxOccurs="unbounded" type="tns:Contract" />
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="skip"/>
+    	</xsd:sequence>
+
+			<xsd:anyAttribute namespace="##any"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Contract">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    			Version:	1.0
+    			Lifecycle state: proposed
+    		</xsd:documentation>
+    	</xsd:annotation>
+    	
+	    	
+    	<xsd:sequence>
+			<xsd:element name="contractId"   type="xsd:string" />
+			<xsd:element name="tariff"   type="xsd:string" />
+			<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="skip"/>
+    	</xsd:sequence>
+
+			<xsd:anyAttribute namespace="##any"/>
+    </xsd:complexType>
+	
+</xsd:schema>
+

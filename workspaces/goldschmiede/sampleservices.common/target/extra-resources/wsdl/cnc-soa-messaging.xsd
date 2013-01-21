@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soa.countandcare.de/messaging"
+	elementFormDefault="qualified" targetNamespace="http://soa.countandcare.de/messaging">
+
+	<!--
+		!! @AUTHORS: - CHANGES HERE WILL POSSIBLY BREAK A LOT OF AGREEMENTS -
+		INCREMENT VERSION NUMBER AFTER CHANGES !!
+	-->
+
+	<!--
+		******************************************************************
+	-->
+
+	<complexType name="ServiceMessageContext">
+		<annotation>
+			<documentation>The ServiceMessageContext is used to hold context
+				informations related to the message exchange for a service call.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element maxOccurs="1" minOccurs="1" name="to" type="string">
+				<annotation>
+					<documentation>
+						The target of the service call a.k.a. service
+						provider. MUST be set due to logging
+						requirements.
+        			</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="replyTo" type="string">
+				<annotation>
+					<documentation>
+						CURRENTLY NOT USED
+
+						Who should get the response of the
+						service call?
+						Used when deviating from the consumer qualified
+						in the
+						"from"-element
+        			</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="1" name="from" type="string">
+				<annotation>
+					<documentation>
+						Which service consumer called the service
+						provider?
+						MUST be set due to logging
+						requirements.
+        			</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="1" name="messageId" type="string">
+				<annotation>
+					<documentation>
+						Uniquely identifies a message. MUST be set due
+						to
+						logging requirements.
+        			</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="requestId" type="string">
+				<annotation>
+					<documentation>
+						MUST be set when using asynchrounous
+						request/response patterns. The requestId is used
+						by the consumer to
+						correlate the asynchronous
+						response message to the asynchrounous
+						request
+						message to which this message is the response.
+					</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="correlation" type="tns:Correlation">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="scenario" type="tns:Scenario">
+			</element>
+			<element maxOccurs="unbounded" minOccurs="0" name="property"
+				type="tns:MessageProperty">
+				<annotation>
+					<documentation>
+						CURRENTLY NOT USED
+
+						Becomes relevant, when new context
+						parameters
+						are required for proper message handling
+						(routing,
+						logging, etc.) Property names MUST be
+						unique.
+        			</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="unbounded" minOccurs="0" name="userContext"
+				type="tns:ContextVariable">
+				<annotation>
+					<documentation>
+						NOT TO BE SET by the CONSUMER or PROVIDER.
+
+						Providers
+						SHOULD pass through ContextVariables
+						when sending the response. The
+						userContext may
+						be used to store variables temporarily in the
+						MessageContext.to be valid A variable in this
+						context is meant for
+						a message exchange, i.e. a
+						request/response-cycle
+        			</documentation>
+				</annotation>
+			</element>
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="lax">
+				<annotation>
+					<documentation>Placedholder to achieve backward compatibility when
+						used in response.</documentation>
+				</annotation>
+			</any>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="ContextVariable">
+		<annotation>
+			<documentation>Represents a temporary variable, commonly used for
+				mediations.</documentation>
+		</annotation>
+		<sequence>
+			<element name="value" type="anyType" />
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="lax">
+				<annotation>
+					<documentation>Placedholder to achieve backward compatibility when
+						used in response.</documentation>
+				</annotation>
+			</any>
+		</sequence>
+		<attribute name="name" type="string">
+			<annotation>
+				<documentation>The name of the variable</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+
+	<complexType name="Correlation">
+		<sequence>
+			<element maxOccurs="1" minOccurs="1" name="id" type="string">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="sequenceNumber"
+				type="positiveInteger">
+			</element>
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="lax">
+				<annotation>
+					<documentation>Placedholder to achieve backward compatibility when
+						used in response.</documentation>
+				</annotation>
+			</any>
+		</sequence>
+	</complexType>
+
+	<complexType name="Scenario">
+		<annotation>
+			<documentation>Scenarios are used to support dynamic routing of
+				messages. A common use case is to decide which service is being
+				called or which datastore is to be accessed for a given client.
+				E.g. this may map to a certain SAP client, while the SAP instance is
+				being used by several clients.</documentation>
+		</annotation>
+		<sequence>
+			<element maxOccurs="1" minOccurs="1" name="context" type="string">
+				<annotation>
+					<documentation>Use this property to establish some named
+						context on
+						which message routing is based. Use this, when multiple clients
+						operate in the same
+						environment, e.g. serveral different SAP
+						clients.</documentation>
+				</annotation>
+			</element>
+			<element name="originator" type="string" minOccurs="0"
+				maxOccurs="1">
+				<annotation>
+					<documentation>The originator of the request. Use the full
+						qualified name of the orinating solution a.k.a application
+						instance.
+						
+					</documentation>
+				</annotation>
+			</element>
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax">
+				<annotation>
+					<documentation>Placedholder to achieve backward compatibility when
+						used in response.</documentation>
+				</annotation>
+			</any>
+		</sequence>
+	</complexType>
+
+	<complexType name="MessageProperty">
+		<annotation>
+			<documentation>
+				Properties are less frequent used message context
+				extensions. These might just be valuable for certain
+				situations or
+				systems. They do furthermore add the
+				flexibility to define the
+				content on a more semantical
+				basis then on a syntactical base.
+				Service providers
+				should ignore unknown attributes unless the
+				mustUnderstand attribute is set.
+                        </documentation>
+		</annotation>
+		<sequence>
+			<element name="value" type="anySimpleType"/>
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax">
+				<annotation>
+					<documentation>Placedholder to achieve backward compatibility when
+						used in response.</documentation>
+				</annotation>
+			</any>
+		</sequence>
+		<attribute name="name" type="string" use="required">
+			<annotation>
+				<documentation>The name of the property. MUST be unique within a
+					MessageContext.</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="mustUnderstand" type="boolean" use="required">
+			<annotation>
+				<documentation>Qualifies, whether a consumer or provider must be
+					able to handle the property as defined for the property.
+					MessageProperties are introduced to ease the extension of the
+					MessageContext with new properties without breaking
+					consumer/provider contracts.</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+</schema>

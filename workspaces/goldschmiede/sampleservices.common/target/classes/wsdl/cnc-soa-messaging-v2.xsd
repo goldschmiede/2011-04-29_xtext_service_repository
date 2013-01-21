@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soa.countandcare.de/messaging/v2"
+	elementFormDefault="qualified" targetNamespace="http://soa.countandcare.de/messaging/v2"
+	version="1.0"
+	>
+
+	<!--
+		!! @AUTHORS: - CHANGES HERE WILL POSSIBLY BREAK A LOT OF AGREEMENTS -
+		INCREMENT VERSION NUMBER AFTER CHANGES !!
+	-->
+
+	<!--
+		******************************************************************
+	-->
+
+	<complexType name="ServiceMessageContext">
+		<annotation>
+			<documentation>
+				The ServiceMessageContext is used to hold context
+				informations related to the message exchange for a
+				service call.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element maxOccurs="1" minOccurs="1" name="to"
+				type="string">
+				<annotation>
+					<documentation>
+						The target FQN of the service call a.k.a. service
+						provider. MUST be set due to logging
+						requirements. 
+						The FQN is built from the organization namespace or shortname,
+						domain namespace, service name, service major version, 
+						service operation being called and appended with an '@' the name
+						of the logical environment and optionally the server name, e.g.
+						"cnc.sales.partner.CustomerMoveBPS[1]:customerReleased@Dev.AppServer"
+					</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="replyTo"
+				type="string">
+				<annotation>
+					<documentation>
+						Who should get the response of the service call? Or who sent the
+						request message?
+						Used when deviating from the consumer qualified
+						in the "from"-element
+						The FQN is built from the organization namespace or shortname,
+						domain namespace, service name, service major version, 
+						service operation being called and appended with an '@' the name
+						of the logical environment and optionally the server name, e.g.
+						"cnc.sales.partner.RegistrationBPS[1]:registerCustomer@Dev.ESB"
+						Consumers may also be solution application like self care portals.
+						
+						An example would look like
+					</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="1" name="from"
+				type="string">
+				<annotation>
+					<documentation>
+						Which service consumer called the service
+						provider? MUST be set due to logging
+						requirements.
+						The FQN is built from the organization namespace or shortname,
+						domain namespace, service name, service major version, 
+						service operation being called and appended with an '@' the name
+						of the logical environment and optionally the server name, e.g.
+						"cnc.sales.partner.RegistrationBPS[1]:registerCustomer@Dev.ESB"
+						Consumers may also be solution application like self care portals.
+						Instead of the service name, the application name is used and a module or
+						user flow name instead of the operation name.
+						An exmple would look like:
+						"ev.sales.CssPortal[1]:CustomerRegistration@Dev.PortalServer"
+					</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="1" name="messageId"
+				type="string">
+				<annotation>
+					<documentation>
+						Uniquely identifies a message. MUST be set due
+						to logging requirements. UUIDs should be used.
+					</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="requestId"
+				type="string">
+				<annotation>
+					<documentation>
+						MUST be set when using asynchrounous
+						request/response message exchange patterns. 
+						The requestId is used by the consumer to correlate 
+						the asynchronous response message to the asynchrounous request
+						message to which this message is the response. It is identical to
+						the messageId of the original request message.
+					</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="correlation"
+				type="tns:Correlation">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="client" type="string">
+				<annotation>
+					<documentation>
+						Use this field to qualify a client on who's behalf 
+						the message is being sent. This is comparable to a client 
+						in client capable systems like sap. Logical names should be
+						used here to identify the partner, instead of system specific
+						IDs, as the partner must be resolvable independent of a concrete
+						technology used.
+						If the partner is a company or organization the organization's name
+						or a wellknown short for that should be used.
+					</documentation>
+				</annotation>
+			</element>
+			<element maxOccurs="unbounded" minOccurs="0"
+				name="userContext" type="tns:ContextVariable">
+				<annotation>
+					<documentation>
+						Providers SHOULD pass through ContextVariables
+						when sending the response. The userContext may
+						be used to store variables temporarily in the
+						MessageContext. To be valid, a variable in this
+						context is scoped to a message exchange, i.e. a
+						request/response-cycle
+					</documentation>
+				</annotation>
+			</element>
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="skip">
+				<annotation>
+					<documentation>Placeholder to achieve backward compatibility when
+						used in response. This allows to add new elements from other
+						targetNamespaces
+					</documentation>
+				</annotation>
+			</any>
+		</sequence>
+		<anyAttribute namespace="##any"/>
+	</complexType>
+
+	<complexType name="ContextVariable">
+		<annotation>
+			<documentation>Represents a temporary variable, commonly used for
+				mediations.</documentation>
+		</annotation>
+		<sequence>
+			<element name="value" type="anyType" />
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="skip">
+				<annotation>
+					<documentation>Placeholder to achieve backward compatibility when
+						used in response.</documentation>
+				</annotation>
+			</any>
+		</sequence>
+		<attribute name="name" type="string">
+			<annotation>
+				<documentation>The name of the variable</documentation>
+			</annotation>
+		</attribute>
+		<anyAttribute namespace="##any"/>
+	</complexType>
+
+	<complexType name="Correlation">
+		<sequence>
+			<element maxOccurs="1" minOccurs="1" name="id" type="string">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="sequenceNumber"
+				type="positiveInteger">
+			</element>
+			<any maxOccurs="unbounded" minOccurs="0" namespace="##other"
+				processContents="skip">
+				<annotation>
+					<documentation>Placeholder to achieve backward compatibility when
+						used in response.</documentation>
+				</annotation>
+			</any>
+		</sequence>
+		<anyAttribute namespace="##any"/>
+	</complexType>
+
+</schema>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="ContractFinderBES" 
+	targetNamespace="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/">
+	<wsdl:documentation>
+		Version 1.0
+		Lifecycle state: proposed
+		
+		
+	</wsdl:documentation>
+	
+	
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/"
+			xmlns:tutd1="http://countandcare.de/tutorial/dsl/v1/"
+			xmlns:msg2="http://soa.countandcare.de/messaging/v2">
+			
+			<xsd:import schemaLocation="cnc-soa-messaging-v2.xsd"
+				namespace="http://soa.countandcare.de/messaging/v2"/>
+			<xsd:import schemaLocation="cnc-tutorial-dsl-v1.xsd"
+				namespace="http://countandcare.de/tutorial/dsl/v1/"/>
+			
+	
+			<xsd:element name="findContractsByCustomerId">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="msgCtx" type="msg2:ServiceMessageContext" />
+						
+						<xsd:element name="customerId" type="xsd:string" ></xsd:element>
+    				</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="findContractsByCustomerIdResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="msgCtx" type="msg2:ServiceMessageContext" />
+						
+						<xsd:element name="contracts" type="tutd1:Contract" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+	
+
+			
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="findContractsByCustomerIdRequest">
+		<wsdl:part element="tns:findContractsByCustomerId" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="findContractsByCustomerIdResponse">
+		<wsdl:part element="tns:findContractsByCustomerIdResponse" name="parameters" />
+	</wsdl:message>
+	
+	
+	<wsdl:portType name="ContractFinderBES">
+		
+		<wsdl:operation name="findContractsByCustomerId">
+			<wsdl:input message="tns:findContractsByCustomerIdRequest" />
+			<wsdl:output message="tns:findContractsByCustomerIdResponse" />
+			
+	
+
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+</wsdl:definitions>

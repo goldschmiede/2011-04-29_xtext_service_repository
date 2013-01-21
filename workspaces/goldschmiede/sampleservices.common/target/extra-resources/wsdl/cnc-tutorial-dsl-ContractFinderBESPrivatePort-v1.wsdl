@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="ContractFinderBES" 
+	targetNamespace="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/">
+	<wsdl:documentation>
+		Version 1.0
+		Lifecycle state: proposed
+		
+		
+	</wsdl:documentation>
+    <wsdl:import namespace="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/" location="cnc-tutorial-dsl-ContractFinderBES-v1.wsdl"></wsdl:import>
+	
+	
+	<wsdl:binding name="ContractFinderBESSOAP"
+		type="tns:ContractFinderBES">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		
+		<wsdl:operation name="findContractsByCustomerId">
+			<soap:operation
+				soapAction="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/findContractsByCustomerId" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+	
+	<wsdl:service name="ContractFinderBES">
+		<wsdl:port binding="tns:ContractFinderBESSOAP"
+			name="ContractFinderBESSOAP">
+			<soap:address location="http://localhost:8080/sampleservices-server/de/countandcare/tutorial/dsl/ContractFinderBES/v1" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

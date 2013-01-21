@@ -1,0 +1,358 @@
+!SESSION 2011-03-18 16:31:01.343 -----------------------------------------------
+eclipse.buildId=M20110210-1200
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_DE
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -data C:\workspaces\goldschmiede -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2011-03-18 16:31:07.515
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-03-18 16:31:07.515
+!MESSAGE A conflict occurred for ALT+CTRL+I:
+Binding(ALT+CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.egit.ui.team.Ignore,Ignore,
+		,
+		Category(org.eclipse.egit.ui.commandCategory,Git,null,true),
+		org.eclipse.egit.ui.internal.actions.IgnoreActionHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+I,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.AddToSVNIgnoreCommand,Add to svn:ignore...,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-03-18 16:31:07.515
+!MESSAGE A conflict occurred for ALT+CTRL+C:
+Binding(ALT+CTRL+C,
+	ParameterizedCommand(Command(org.eclipse.egit.ui.team.Commit,Commit,
+		,
+		Category(org.eclipse.egit.ui.commandCategory,Git,null,true),
+		org.eclipse.egit.ui.internal.actions.CommitActionHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+C,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.CommitCommand,Commit...,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.core.net 1 0 2011-03-18 16:31:10.234
+!MESSAGE System property http.proxyHost is not set but should be iproxy.
+
+!ENTRY org.eclipse.core.net 1 0 2011-03-18 16:31:10.234
+!MESSAGE System property http.proxyPort is not set but should be 8088.
+
+!ENTRY org.eclipse.core.net 1 0 2011-03-18 16:31:10.234
+!MESSAGE System property https.proxyHost is not set but should be iproxy.
+
+!ENTRY org.eclipse.core.net 1 0 2011-03-18 16:31:10.234
+!MESSAGE System property https.proxyPort is not set but should be 8088.
+
+!ENTRY org.eclipse.core.net 1 0 2011-03-18 16:31:10.234
+!MESSAGE System property https.proxyHost is not set but should be iproxy.
+
+!ENTRY org.eclipse.core.net 1 0 2011-03-18 16:31:10.234
+!MESSAGE System property https.proxyPort is not set but should be 8088.
+
+!ENTRY org.maven.ide.eclipse 4 0 2011-03-18 16:31:42.390
+!MESSAGE Unable to update index for snapshots|http://localhost:8081/nexus/content/groups/public-snapshots
+!STACK 0
+java.io.IOException: Connection refused: no further information
+	at org.maven.ide.eclipse.internal.index.AsyncFetcher$PipedErrorInputStream.checkError(AsyncFetcher.java:181)
+	at org.maven.ide.eclipse.internal.index.AsyncFetcher$PipedErrorInputStream.read(AsyncFetcher.java:186)
+	at java.io.PipedInputStream.read(PipedInputStream.java:361)
+	at java.io.InputStream.read(InputStream.java:85)
+	at java.util.Properties$LineReader.readLine(Properties.java:418)
+	at java.util.Properties.load0(Properties.java:337)
+	at java.util.Properties.load(Properties.java:325)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.downloadIndexProperties(DefaultIndexUpdater.java:498)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.access$100(DefaultIndexUpdater.java:74)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater$IndexAdaptor.setProperties(DefaultIndexUpdater.java:780)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:954)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:138)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1072)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateIndex(NexusIndexManager.java:1025)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager$1.run(NexusIndexManager.java:632)
+	at org.maven.ide.eclipse.internal.index.IndexUpdaterJob.run(IndexUpdaterJob.java:71)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:77)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:753)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:647)
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:476)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.execute(AsyncHttpClient.java:227)
+	at org.maven.ide.eclipse.internal.index.AsyncFetcher.retrieve(AsyncFetcher.java:148)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.downloadIndexProperties(DefaultIndexUpdater.java:493)
+	... 9 more
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.connect(NioClientSocketPipelineSink.java:384)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.processSelectedKeys(NioClientSocketPipelineSink.java:354)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.run(NioClientSocketPipelineSink.java:276)
+	at org.jboss.netty.util.internal.IoWorkerRunnable.run(IoWorkerRunnable.java:46)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:619)
+
+!ENTRY org.maven.ide.eclipse 4 0 2011-03-18 16:31:44.890
+!MESSAGE Unable to update index for central|http://localhost:8081/nexus/content/groups/public
+!STACK 0
+java.io.IOException: Connection refused: no further information
+	at org.maven.ide.eclipse.internal.index.AsyncFetcher$PipedErrorInputStream.checkError(AsyncFetcher.java:181)
+	at org.maven.ide.eclipse.internal.index.AsyncFetcher$PipedErrorInputStream.read(AsyncFetcher.java:186)
+	at java.io.PipedInputStream.read(PipedInputStream.java:361)
+	at java.io.InputStream.read(InputStream.java:85)
+	at java.util.Properties$LineReader.readLine(Properties.java:418)
+	at java.util.Properties.load0(Properties.java:337)
+	at java.util.Properties.load(Properties.java:325)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.downloadIndexProperties(DefaultIndexUpdater.java:498)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.access$100(DefaultIndexUpdater.java:74)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater$IndexAdaptor.setProperties(DefaultIndexUpdater.java:780)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:954)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:138)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1072)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateIndex(NexusIndexManager.java:1025)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager$1.run(NexusIndexManager.java:632)
+	at org.maven.ide.eclipse.internal.index.IndexUpdaterJob.run(IndexUpdaterJob.java:71)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:77)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:753)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:647)
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:476)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.execute(AsyncHttpClient.java:227)
+	at org.maven.ide.eclipse.internal.index.AsyncFetcher.retrieve(AsyncFetcher.java:148)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.downloadIndexProperties(DefaultIndexUpdater.java:493)
+	... 9 more
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.connect(NioClientSocketPipelineSink.java:384)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.processSelectedKeys(NioClientSocketPipelineSink.java:354)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.run(NioClientSocketPipelineSink.java:276)
+	at org.jboss.netty.util.internal.IoWorkerRunnable.run(IoWorkerRunnable.java:46)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:619)
+
+!ENTRY org.maven.ide.eclipse 4 0 2011-03-18 16:31:55.796
+!MESSAGE Build errors for sampleservices.client
+!STACK 0
+org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal on project sampleservices.client: Could not resolve dependencies for project de.countandcare.tutorial.dsl:sampleservices.client:jar:0.0.1-SNAPSHOT: Failed to collect dependencies for [org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-bindings-soap:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-transports-http:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.2.10 (compile), javax.xml.bind:jaxb-api:jar:2.2.1 (compile), com.sun.xml.bind:jaxb-xjc:jar:2.2.1.1 (provided?), de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:190)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.resolveProjectDependencies(LifecycleDependencyResolver.java:104)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.ensureDependenciesAreResolved(MojoExecutor.java:258)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:201)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:319)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:156)
+	at org.maven.ide.eclipse.internal.embedder.MavenImpl.execute(MavenImpl.java:223)
+	at org.maven.ide.eclipse.internal.project.GenericBuildParticipant.executePostBuild(GenericBuildParticipant.java:138)
+	at org.maven.ide.eclipse.internal.project.GenericBuildParticipant.build(GenericBuildParticipant.java:77)
+	at org.maven.ide.eclipse.internal.builder.MavenBuilder.build(MavenBuilder.java:153)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.apache.maven.project.DependencyResolutionException: Could not resolve dependencies for project de.countandcare.tutorial.dsl:sampleservices.client:jar:0.0.1-SNAPSHOT: Failed to collect dependencies for [org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-bindings-soap:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-transports-http:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.2.10 (compile), javax.xml.bind:jaxb-api:jar:2.2.1 (compile), com.sun.xml.bind:jaxb-xjc:jar:2.2.1.1 (provided?), de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:127)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:165)
+	... 27 more
+Caused by: org.sonatype.aether.collection.DependencyCollectionException: Failed to collect dependencies for [org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-bindings-soap:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-transports-http:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.2.10 (compile), javax.xml.bind:jaxb-api:jar:2.2.1 (compile), com.sun.xml.bind:jaxb-xjc:jar:2.2.1.1 (provided?), de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.collectDependencies(DefaultDependencyCollector.java:251)
+	at org.sonatype.aether.impl.internal.DefaultRepositorySystem.collectDependencies(DefaultRepositorySystem.java:318)
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:119)
+	... 28 more
+Caused by: org.sonatype.aether.resolution.ArtifactDescriptorException: Failed to read artifact descriptor for org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:jar:1.1
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.loadPom(DefaultArtifactDescriptorReader.java:283)
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.readArtifactDescriptor(DefaultArtifactDescriptorReader.java:173)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:419)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.collectDependencies(DefaultDependencyCollector.java:233)
+	... 30 more
+Caused by: org.sonatype.aether.resolution.ArtifactResolutionException: Failure to transfer org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from http://localhost:8081/nexus/content/groups/public was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced. Original error: Could not transfer artifact org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from/to central (http://localhost:8081/nexus/content/groups/public): Connection refused: no further information
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:526)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:214)
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.loadPom(DefaultArtifactDescriptorReader.java:268)
+	... 37 more
+Caused by: org.sonatype.aether.transfer.ArtifactTransferException: Failure to transfer org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from http://localhost:8081/nexus/content/groups/public was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced. Original error: Could not transfer artifact org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from/to central (http://localhost:8081/nexus/content/groups/public): Connection refused: no further information
+	at org.sonatype.aether.impl.internal.DefaultUpdateCheckManager.checkArtifact(DefaultUpdateCheckManager.java:201)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:408)
+	... 39 more
+
+!ENTRY org.maven.ide.eclipse 4 0 2011-03-18 16:34:24.765
+!MESSAGE Build errors for sampleservices.client
+!STACK 0
+org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal on project sampleservices.client: Could not resolve dependencies for project de.countandcare.tutorial.dsl:sampleservices.client:jar:0.0.1-SNAPSHOT: Failed to collect dependencies for [org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-bindings-soap:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-transports-http:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.2.10 (compile), javax.xml.bind:jaxb-api:jar:2.2.1 (compile), com.sun.xml.bind:jaxb-xjc:jar:2.2.1.1 (provided?), de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:190)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.resolveProjectDependencies(LifecycleDependencyResolver.java:104)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.ensureDependenciesAreResolved(MojoExecutor.java:258)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:201)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:319)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:156)
+	at org.maven.ide.eclipse.internal.embedder.MavenImpl.execute(MavenImpl.java:223)
+	at org.maven.ide.eclipse.internal.project.GenericBuildParticipant.executePostBuild(GenericBuildParticipant.java:138)
+	at org.maven.ide.eclipse.internal.project.GenericBuildParticipant.build(GenericBuildParticipant.java:77)
+	at org.maven.ide.eclipse.internal.builder.MavenBuilder.build(MavenBuilder.java:153)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.apache.maven.project.DependencyResolutionException: Could not resolve dependencies for project de.countandcare.tutorial.dsl:sampleservices.client:jar:0.0.1-SNAPSHOT: Failed to collect dependencies for [org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-bindings-soap:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-transports-http:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.2.10 (compile), javax.xml.bind:jaxb-api:jar:2.2.1 (compile), com.sun.xml.bind:jaxb-xjc:jar:2.2.1.1 (provided?), de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:127)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:165)
+	... 27 more
+Caused by: org.sonatype.aether.collection.DependencyCollectionException: Failed to collect dependencies for [org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-bindings-soap:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-transports-http:jar:2.2.10 (compile), org.apache.cxf:cxf-rt-frontend-jaxws:jar:2.2.10 (compile), javax.xml.bind:jaxb-api:jar:2.2.1 (compile), com.sun.xml.bind:jaxb-xjc:jar:2.2.1.1 (provided?), de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.collectDependencies(DefaultDependencyCollector.java:251)
+	at org.sonatype.aether.impl.internal.DefaultRepositorySystem.collectDependencies(DefaultRepositorySystem.java:318)
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:119)
+	... 28 more
+Caused by: org.sonatype.aether.resolution.ArtifactDescriptorException: Failed to read artifact descriptor for org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:jar:1.1
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.loadPom(DefaultArtifactDescriptorReader.java:283)
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.readArtifactDescriptor(DefaultArtifactDescriptorReader.java:173)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:419)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.collectDependencies(DefaultDependencyCollector.java:233)
+	... 30 more
+Caused by: org.sonatype.aether.resolution.ArtifactResolutionException: Failure to transfer org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from http://localhost:8081/nexus/content/groups/public was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced. Original error: Could not transfer artifact org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from/to central (http://localhost:8081/nexus/content/groups/public): Connection refused: no further information
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:526)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:214)
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.loadPom(DefaultArtifactDescriptorReader.java:268)
+	... 37 more
+Caused by: org.sonatype.aether.transfer.ArtifactTransferException: Failure to transfer org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from http://localhost:8081/nexus/content/groups/public was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced. Original error: Could not transfer artifact org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from/to central (http://localhost:8081/nexus/content/groups/public): Connection refused: no further information
+	at org.sonatype.aether.impl.internal.DefaultUpdateCheckManager.checkArtifact(DefaultUpdateCheckManager.java:201)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:408)
+	... 39 more
+
+!ENTRY org.maven.ide.eclipse 4 0 2011-03-18 16:34:46.312
+!MESSAGE Build errors for sampleservices.server
+!STACK 0
+org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal on project sampleservices-server: Could not resolve dependencies for project de.countandcare.tutorial.dsl:sampleservices-server:war:0.0.1-SNAPSHOT: Failed to collect dependencies for [de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), junit:junit:jar:4.8.1 (test), javax.servlet:servlet-api:jar:2.5 (provided), org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.springframework.security:spring-security-core:jar:3.0.3.RELEASE (compile), org.springframework.security:spring-security-web:jar:3.0.3.RELEASE (compile), org.springframework.security:spring-security-config:jar:3.0.3.RELEASE (compile), org.springframework:spring-web:jar:3.0.3.RELEASE (compile), org.springframework:spring-webmvc:jar:3.0.3.RELEASE (compile), org.springframework:spring-aspects:jar:3.0.3.RELEASE (compile), org.springframework:spring-core:jar:3.0.3.RELEASE (compile), bouncycastle:bcmail-jdk16:jar:140 (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:190)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.resolveProjectDependencies(LifecycleDependencyResolver.java:104)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.ensureDependenciesAreResolved(MojoExecutor.java:258)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:201)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:319)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:156)
+	at org.maven.ide.eclipse.internal.embedder.MavenImpl.execute(MavenImpl.java:223)
+	at org.maven.ide.eclipse.internal.project.GenericBuildParticipant.executePostBuild(GenericBuildParticipant.java:138)
+	at org.maven.ide.eclipse.internal.project.GenericBuildParticipant.build(GenericBuildParticipant.java:77)
+	at org.maven.ide.eclipse.internal.builder.MavenBuilder.build(MavenBuilder.java:153)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.apache.maven.project.DependencyResolutionException: Could not resolve dependencies for project de.countandcare.tutorial.dsl:sampleservices-server:war:0.0.1-SNAPSHOT: Failed to collect dependencies for [de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), junit:junit:jar:4.8.1 (test), javax.servlet:servlet-api:jar:2.5 (provided), org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.springframework.security:spring-security-core:jar:3.0.3.RELEASE (compile), org.springframework.security:spring-security-web:jar:3.0.3.RELEASE (compile), org.springframework.security:spring-security-config:jar:3.0.3.RELEASE (compile), org.springframework:spring-web:jar:3.0.3.RELEASE (compile), org.springframework:spring-webmvc:jar:3.0.3.RELEASE (compile), org.springframework:spring-aspects:jar:3.0.3.RELEASE (compile), org.springframework:spring-core:jar:3.0.3.RELEASE (compile), bouncycastle:bcmail-jdk16:jar:140 (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:127)
+	at org.apache.maven.lifecycle.internal.LifecycleDependencyResolver.getDependencies(LifecycleDependencyResolver.java:165)
+	... 27 more
+Caused by: org.sonatype.aether.collection.DependencyCollectionException: Failed to collect dependencies for [de.countandcare.tutorial.dsl:sampleservices.common:jar:0.0.1-SNAPSHOT (compile), junit:junit:jar:4.8.1 (test), javax.servlet:servlet-api:jar:2.5 (provided), org.apache.cxf:cxf-bundle-minimal:jar:2.2.10 (compile), org.springframework.security:spring-security-core:jar:3.0.3.RELEASE (compile), org.springframework.security:spring-security-web:jar:3.0.3.RELEASE (compile), org.springframework.security:spring-security-config:jar:3.0.3.RELEASE (compile), org.springframework:spring-web:jar:3.0.3.RELEASE (compile), org.springframework:spring-webmvc:jar:3.0.3.RELEASE (compile), org.springframework:spring-aspects:jar:3.0.3.RELEASE (compile), org.springframework:spring-core:jar:3.0.3.RELEASE (compile), bouncycastle:bcmail-jdk16:jar:140 (compile), ch.qos.logback:logback-classic:jar:0.9.24 (compile), org.slf4j:slf4j-api:jar:1.6.1 (compile), org.slf4j:jcl-over-slf4j:jar:1.6.1 (runtime)]
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.collectDependencies(DefaultDependencyCollector.java:251)
+	at org.sonatype.aether.impl.internal.DefaultRepositorySystem.collectDependencies(DefaultRepositorySystem.java:318)
+	at org.apache.maven.project.DefaultProjectDependenciesResolver.resolve(DefaultProjectDependenciesResolver.java:119)
+	... 28 more
+Caused by: org.sonatype.aether.resolution.ArtifactDescriptorException: Failed to read artifact descriptor for org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:jar:1.1
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.loadPom(DefaultArtifactDescriptorReader.java:283)
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.readArtifactDescriptor(DefaultArtifactDescriptorReader.java:173)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:419)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.process(DefaultDependencyCollector.java:515)
+	at org.sonatype.aether.impl.internal.DefaultDependencyCollector.collectDependencies(DefaultDependencyCollector.java:233)
+	... 30 more
+Caused by: org.sonatype.aether.resolution.ArtifactResolutionException: Failure to transfer org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from http://localhost:8081/nexus/content/groups/public was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced. Original error: Could not transfer artifact org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from/to central (http://localhost:8081/nexus/content/groups/public): Connection refused: no further information
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:526)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:214)
+	at org.apache.maven.repository.internal.DefaultArtifactDescriptorReader.loadPom(DefaultArtifactDescriptorReader.java:268)
+	... 37 more
+Caused by: org.sonatype.aether.transfer.ArtifactTransferException: Failure to transfer org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from http://localhost:8081/nexus/content/groups/public was cached in the local repository, resolution will not be reattempted until the update interval of central has elapsed or updates are forced. Original error: Could not transfer artifact org.apache.geronimo.specs:geronimo-activation_1.0.2_spec:pom:1.1 from/to central (http://localhost:8081/nexus/content/groups/public): Connection refused: no further information
+	at org.sonatype.aether.impl.internal.DefaultUpdateCheckManager.checkArtifact(DefaultUpdateCheckManager.java:201)
+	at org.sonatype.aether.impl.internal.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:408)
+	... 39 more
+
+!ENTRY org.eclipse.jface 2 0 2011-03-18 16:36:40.015
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-03-18 16:36:40.015
+!MESSAGE A conflict occurred for CTRL+SHIFT+G:
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace,References in Workspace,
+		Search for references to the selected element in the workspace,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.jboss.tools.seam.ui.find.references,Find Seam References,
+		Find Seam References,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		org.jboss.tools.seam.ui.handlers.FindSeamReferencesHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.springframework.ide.eclipse.beans.ui.editor.commands.searchBeanReferences,Spring Beans References Search,
+		,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)

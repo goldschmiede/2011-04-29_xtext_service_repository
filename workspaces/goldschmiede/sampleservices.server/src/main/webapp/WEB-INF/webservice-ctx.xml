@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cxf="http://cxf.apache.org/core" 
+	
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:soap="http://cxf.apache.org/bindings/soap"
+	xmlns:cfbes="http://countandcare.de/tutorial/dsl/ContractFinderBES/v1/"
+	
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+			http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+			http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+			http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd">
+				
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />				
+				
+	<cxf:bus>
+		<cxf:features>
+			<bean class="org.apache.cxf.feature.FastInfosetFeature" />
+		</cxf:features>
+	</cxf:bus>
+					
+	<jaxws:endpoint id="contractFinderBES" 
+		implementor="#contractFinderBESImpl"
+		address="/de/countandcare/tutorial/dsl/ContractFinderBES/v1"
+		wsdlLocation="classpath:wsdl/cnc-tutorial-dsl-ContractFinderBESPrivatePort-v1.wsdl"
+		serviceName="cfbes:ContractFinderBES">
+	</jaxws:endpoint>
+	
+	<!-- ServiceImpls -->
+	<bean id="contractFinderBESImpl" class="de.countandcare.tutorial.dsl.sampleservices.server.ws.ContractFinderBESImpl">
+	</bean>
+</beans>
